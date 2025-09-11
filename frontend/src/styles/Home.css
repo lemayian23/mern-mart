@@ -1,0 +1,508 @@
+/* Home.css */
+.home-container {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-text {
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.brand-gradient {
+  background: linear-gradient(45deg, #ffd89b, #19547b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.cta-btn.primary {
+  background: white;
+  color: #667eea;
+}
+
+.cta-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-btn.secondary:hover {
+  background: white;
+  color: #667eea;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 400px;
+}
+
+.floating-products {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.floating-product {
+  position: absolute;
+  font-size: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+.floating-product.product-1 {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0s;
+}
+
+.floating-product.product-2 {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  animation-delay: 0.5s;
+}
+
+.floating-product.product-3 {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 1s;
+}
+
+.floating-product.product-4 {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  animation-delay: 1.5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Features Section */
+.features-section {
+  padding: 4rem 1rem;
+  background: #f8f9fa;
+}
+
+.features-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.feature-card p {
+  color: #718096;
+  line-height: 1.6;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  color: #718096;
+}
+
+/* Featured Products */
+.featured-section {
+  padding: 4rem 1rem;
+  background: white;
+}
+
+.featured-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.featured-product-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.featured-product-card:hover {
+  transform: translateY(-8px);
+}
+
+.featured-product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.featured-product-info {
+  padding: 1.5rem;
+}
+
+.featured-product-info h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #2d3748;
+}
+
+.featured-product-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.featured-product-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.add-to-cart-btn,
+.view-details-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.add-to-cart-btn {
+  background: #667eea;
+  color: white;
+}
+
+.add-to-cart-btn:hover {
+  background: #5a67d8;
+}
+
+.view-details-btn {
+  background: transparent;
+  color: #667eea;
+  border: 2px solid #667eea;
+}
+
+.view-details-btn:hover {
+  background: #667eea;
+  color: white;
+}
+
+/* Products Section */
+.products-section {
+  padding: 4rem 1rem;
+  background: #f8f9fa;
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  position: relative;
+  display: flex;
+  gap: 1rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+}
+
+.clear-search-btn {
+  padding: 1rem 1.5rem;
+  background: #ff4757;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.clear-search-btn:hover {
+  background: #e84143;
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+}
+
+.no-results-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.browse-all-btn {
+  padding: 1rem 2rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.browse-all-btn:hover {
+  background: #5a67d8;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+}
+
+.newsletter-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.newsletter-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+}
+
+.newsletter-input:focus {
+  outline: none;
+}
+
+.newsletter-btn {
+  padding: 1rem 2rem;
+  background: white;
+  color: #667eea;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.newsletter-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Error State */
+.error-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+}
+
+.error-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.retry-btn {
+  padding: 1rem 2rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.retry-btn:hover {
+  background: #5a67d8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-product-actions {
+    flex-direction: column;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .cta-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+}
