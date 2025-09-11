@@ -74,15 +74,22 @@ export const AuthProvider = ({ children }) => {
       const response = await authService.login(credentials);
       const { token: newToken, user: newUser } = response;
       
+      // Add isAdmin flag based on email (for demo purposes)
+      // In production, this should come from your backend
+      const userWithAdmin = {
+        ...newUser,
+        isAdmin: newUser.email === 'admin@example.com' || newUser.email === 'lemayian23@example.com'
+      };
+      
       setToken(newToken);
-      setUser(newUser);
+      setUser(userWithAdmin);
       authService.setAuthToken(newToken);
       localStorage.setItem('token', newToken);
       
       return { 
         success: true, 
         message: 'Login successful',
-        user: newUser,
+        user: userWithAdmin,
         token: newToken
       };
     } catch (error) {

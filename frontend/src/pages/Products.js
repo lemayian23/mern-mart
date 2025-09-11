@@ -20,96 +20,97 @@ const Products = () => {
   const { addToCart } = useCart();
 
   // Mock product data - replace with API call later
-  const mockProducts = [
-    {
-      _id: '1',
-      name: 'Wireless Bluetooth Headphones',
-      price: 99.99,
-      description: 'High-quality wireless headphones with noise cancellation and 30-hour battery life',
-      image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop',
-      category: 'electronics',
-      inStock: true,
-      rating: 4.5,
-      reviews: 125
-    },
-    {
-      _id: '2',
-      name: 'Running Shoes',
-      price: 129.99,
-      description: 'Comfortable running shoes for all terrains with advanced cushioning technology',
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop',
-      category: 'clothing',
-      inStock: true,
-      rating: 4.3,
-      reviews: 89
-    },
-    {
-      _id: '3',
-      name: 'Smart Watch',
-      price: 199.99,
-      description: 'Feature-rich smartwatch with health monitoring, GPS, and smartphone integration',
-      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop',
-      category: 'electronics',
-      inStock: false,
-      rating: 4.7,
-      reviews: 203
-    },
-    {
-      _id: '4',
-      name: 'Coffee Maker',
-      price: 79.99,
-      description: 'Automatic coffee maker with programmable settings and thermal carafe',
-      image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=300&h=300&fit=crop',
-      category: 'home',
-      inStock: true,
-      rating: 4.2,
-      reviews: 67
-    },
-    {
-      _id: '5',
-      name: 'Programming Book',
-      price: 39.99,
-      description: 'Comprehensive guide to modern web development and programming concepts',
-      image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&h=300&fit=crop',
-      category: 'books',
-      inStock: true,
-      rating: 4.8,
-      reviews: 156
-    },
-    {
-      _id: '6',
-      name: 'Yoga Mat',
-      price: 49.99,
-      description: 'Eco-friendly yoga mat for comfortable practice with non-slip surface',
-      image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300&h=300&fit=crop',
-      category: 'sports',
-      inStock: true,
-      rating: 4.4,
-      reviews: 92
-    },
-    {
-      _id: '7',
-      name: 'Laptop Backpack',
-      price: 89.99,
-      description: 'Durable laptop backpack with multiple compartments and USB charging port',
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&h=300&fit=crop',
-      category: 'accessories',
-      inStock: true,
-      rating: 4.6,
-      reviews: 178
-    },
-    {
-      _id: '8',
-      name: 'Wireless Mouse',
-      price: 29.99,
-      description: 'Ergonomic wireless mouse with precision tracking and long battery life',
-      image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=300&fit=crop',
-      category: 'electronics',
-      inStock: true,
-      rating: 4.1,
-      reviews: 114
-    }
-  ];
+// Replace the mockProducts array with this:
+const mockProducts = [
+  {
+    _id: '1',
+    name: 'Wireless Bluetooth Headphones',
+    price: 99.99,
+    description: 'High-quality wireless headphones with noise cancellation and 30-hour battery life',
+    image: 'https://picsum.photos/300/300?random=1',
+    category: 'electronics',
+    inStock: true,
+    rating: 4.5,
+    reviews: 125
+  },
+  {
+    _id: '2',
+    name: 'Running Shoes',
+    price: 129.99,
+    description: 'Comfortable running shoes for all terrains with advanced cushioning technology',
+    image: 'https://picsum.photos/300/300?random=2',
+    category: 'clothing',
+    inStock: true,
+    rating: 4.3,
+    reviews: 89
+  },
+  {
+    _id: '3',
+    name: 'Smart Watch',
+    price: 199.99,
+    description: 'Feature-rich smartwatch with health monitoring, GPS, and smartphone integration',
+    image: 'https://picsum.photos/300/300?random=3',
+    category: 'electronics',
+    inStock: false,
+    rating: 4.7,
+    reviews: 203
+  },
+  {
+    _id: '4',
+    name: 'Coffee Maker',
+    price: 79.99,
+    description: 'Automatic coffee maker with programmable settings and thermal carafe',
+    image: 'https://picsum.photos/300/300?random=4',
+    category: 'home',
+    inStock: true,
+    rating: 4.2,
+    reviews: 67
+  },
+  {
+    _id: '5',
+    name: 'Programming Book',
+    price: 39.99,
+    description: 'Comprehensive guide to modern web development and programming concepts',
+    image: 'https://picsum.photos/300/300?random=5',
+    category: 'books',
+    inStock: true,
+    rating: 4.8,
+    reviews: 156
+  },
+  {
+    _id: '6',
+    name: 'Yoga Mat',
+    price: 49.99,
+    description: 'Eco-friendly yoga mat for comfortable practice with non-slip surface',
+    image: 'https://picsum.photos/300/300?random=6',
+    category: 'sports',
+    inStock: true,
+    rating: 4.4,
+    reviews: 92
+  },
+  {
+    _id: '7',
+    name: 'Laptop Backpack',
+    price: 89.99,
+    description: 'Durable laptop backpack with multiple compartments and USB charging port',
+    image: 'https://picsum.photos/300/300?random=7',
+    category: 'accessories',
+    inStock: true,
+    rating: 4.6,
+    reviews: 178
+  },
+  {
+    _id: '8',
+    name: 'Wireless Mouse',
+    price: 29.99,
+    description: 'Ergonomic wireless mouse with precision tracking and long battery life',
+    image: 'https://picsum.photos/300/300?random=8',
+    category: 'electronics',
+    inStock: true,
+    rating: 4.1,
+    reviews: 114
+  }
+];
 
   useEffect(() => {
     // Simulate API call

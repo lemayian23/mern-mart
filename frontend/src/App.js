@@ -12,6 +12,8 @@ import Profile from './pages/Profile';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
+import AdminDashboard from './pages/AdminDashboard';
+import PrivateRoute from './components/auth/PrivateRoute'; // Import PrivateRoute
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -34,6 +36,11 @@ function App() {
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/about" element={<About />} />
+                  <Route path="/admin" element={
+                    <PrivateRoute>
+                      <AdminDashboard />
+                    </PrivateRoute>
+                  } />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

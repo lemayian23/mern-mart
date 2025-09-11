@@ -1,0 +1,34 @@
+.admin-users {
+  padding: 1rem;
+}
+
+.placeholder-content {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 2px dashed #dee2e6;
+  text-align: center;
+  color: #6c757d;
+}
+
+.placeholder-features {
+  margin-top: 2rem;
+  text-align: left;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.placeholder-features h4 {
+  color: #495057;
+  margin-bottom: 1rem;
+}
+
+.placeholder-features ul {
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.placeholder-features li {
+  margin-bottom: 0.5rem;
+}
