@@ -30,7 +30,15 @@ export const AuthProvider = ({ children }) => {
           
           // Verify token and get user data
           const userData = await authService.verifyToken(token);
-          setUser(userData);
+          
+          // Add isAdmin flag based on email (for demo purposes)
+          // In production, this should come from your backend
+          const userWithAdmin = {
+            ...userData,
+            isAdmin: userData.email === 'admin@example.com' || userData.email === 'lemayian23@example.com'
+          };
+          
+          setUser(userWithAdmin);
           setError(null);
         } catch (error) {
           console.error('Token verification failed:', error);
@@ -107,8 +115,20 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
   };
 
-  const updateUser = (updatedUser) => {
-    setUser(updatedUser);
+  const updateUserProfile = async (userData) => {
+    try {
+      // In a real app, you would make an API call here
+      // For now, we'll update locally and simulate success
+      const updatedUser = { ...user, ...userData };
+      setUser(updatedUser);
+      
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      return { success: true, message: 'Profile updated successfully' };
+    } catch (error) {
+      return { success: false, message: 'Failed to update profile' };
+    }
   };
 
   const clearError = () => {
@@ -123,7 +143,7 @@ export const AuthProvider = ({ children }) => {
     register,
     login,
     logout,
-    updateUser,
+    updateUser: updateUserProfile,
     clearError,
     isAuthenticated: !!user && !!token
   };
