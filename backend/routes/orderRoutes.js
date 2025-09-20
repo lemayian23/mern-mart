@@ -1,13 +1,14 @@
 const express = require('express');
-const router = express.Router();
-const { auth } = require('../middleware/auth');
-const { asyncHandler } = require('../middleware/errorHandler');
-const orderController = require('../controllers/orderController');
+const { getUserOrders, getOrderById, createOrder, updateOrderStatus } = require('../controllers/orderController');
+const auth = require('../middleware/authMiddleware');
 
-router.get('/', auth, asyncHandler(orderController.getOrders));
-router.get('/:id', auth, asyncHandler(orderController.getOrder));
-router.post('/', auth, asyncHandler(orderController.createOrder));
-router.put('/:id', auth, asyncHandler(orderController.updateOrder));
-router.delete('/:id', auth, asyncHandler(orderController.deleteOrder));
+const router = express.Router();
+
+router.use(auth);
+
+router.get('/', getUserOrders);
+router.get('/:id', getOrderById);
+router.post('/', createOrder);
+router.patch('/:id/status', updateOrderStatus);
 
 module.exports = router;
