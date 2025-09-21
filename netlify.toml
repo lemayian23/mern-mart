@@ -1,14 +1,10 @@
 [build]
-  base = "frontend"  # Set the base to the frontend directory
-  publish = "build"  # Publish the build folder from the base directory
-  command = "npm run build"
-
-# Add this section to install the plugin
-[[plugins]]
-  package = "netlify-plugin-node-modules"
+  base = "/"
+  publish = "frontend/build"
+  command = "cd frontend && npm install && npm run build"
 
 [build.environment]
-  NODE_VERSION = "18"  # Use a Node version compatible with your React app
+  NODE_VERSION = "18"
 
 [[redirects]]
   from = "/*"
