@@ -1,28 +1,70 @@
-import React from 'react';
-import { useCart } from '../../hooks/useCart';
-import CartButton from '../cart/CartButton';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { wishlistService } from '../../services/wishlistService';
+import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
-  const { isInCart } = useCart();
+  const [inWishlist, setInWishlist] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    checkWishlistStatus();
+  }, [product._id]);
+
+  const checkWishlistStatus = async () => {
+    try {
+      const response = await wishlistService.checkInWishlist(product._id);
+      setInWishlist(response.inWishlist);
+    } catch (error) {
+      console.error('Failed to check wishlist status:', error);
+    }
+  };
+
+  const handleWishlistToggle = async () => {
+    setLoading(true);
+    try {
+      if (inWishlist) {
+        await wishlistService.removeFromWishlist(product._id);
+        setInWishlist(false);
+      } else {
+        await wishlistService.addToWishlist(product._id);
+        setInWishlist(true);
+      }
+    } catch (error) {
+      console.error('Failed to update wishlist:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="product-card">
       <div className="product-image">
-        <img src={product.image} alt={product.name} />
-        {!product.inStock && (
-          <div className="out-of-stock">Out of Stock</div>
-        )}
+        <Link to={`/product/${product._id}`}>
+          <img src={product.image} alt={product.name} />
+        </Link>
+        <button
+          className={`wishlist-btn ${inWishlist ? 'in-wishlist' : ''}`}
+          onClick={handleWishlistToggle}
+          disabled={loading}
+          aria-label={inWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
+        >
+          {inWishlist ? '❤️' : '🤍'}
+        </button>
       </div>
       
       <div className="product-info">
-        <h3 className="product-name">{product.name}</h3>
-        <p className="product-description">{product.description}</p>
-        <div className="product-price">${product.price}</div>
-        <div className="product-category">{product.category}</div>
-      </div>
-      
-      <div className="product-actions">
-        <CartButton product={product} />
+        <Link to={`/product/${product._id}`} className="product-link">
+          <h3 className="product-name">{product.name}</h3>
+        </Link>
+        <p className="product-category">{product.category}</p>
+        <p className="product-price">${product.price.toFixed(2)}</p>
+        
+        {product.inStock ? (
+          <span className="stock-status in-stock">In Stock</span>
+        ) : (
+          <span className="stock-status out-of-stock">Out of Stock</span>
+        )}
       </div>
     </div>
   );

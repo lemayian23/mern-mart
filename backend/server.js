@@ -19,6 +19,9 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/user', require('./routes/user'));
+app.use('/api/orders', require('./routes/orders'));
+app.use('/api/addresses', require('./routes/addresses'));
+app.use('/api/wishlist', require('./routes/wishlist'));
 
 // Basic test route
 app.get('/api/test', (req, res) => {
@@ -31,7 +34,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Something went wrong!' });
 });
 
-// 404 handler - FIXED: Use a proper path instead of '*'
+// 404 handler
 app.use((req, res, next) => {
   res.status(404).json({ message: 'Route not found' });
 });

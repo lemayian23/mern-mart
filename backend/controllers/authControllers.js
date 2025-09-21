@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Wishlist = require('../models/Wishlist');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -41,6 +42,16 @@ const register = async (req, res) => {
       password: hashedPassword
     });
 
+    // Create a wishlist for the new user
+    const wishlist = await Wishlist.create({ 
+      user: user._id,
+      items: []
+    });
+
+    // Update user with wishlist reference
+    user.wishlist = wishlist._id;
+    await user.save();
+
     // Generate token
     const token = generateToken(user._id);
 
@@ -51,7 +62,8 @@ const register = async (req, res) => {
         user: {
           _id: user._id,
           name: user.name,
-          email: user.email
+          email: user.email,
+          wishlist: wishlist._id
         },
         token
       }
@@ -82,7 +94,7 @@ const login = async (req, res) => {
     }
 
     // Check if user exists
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).populate('wishlist');
     if (!user) {
       return res.status(401).json({
         success: false,
@@ -109,7 +121,8 @@ const login = async (req, res) => {
         user: {
           _id: user._id,
           name: user.name,
-          email: user.email
+          email: user.email,
+          wishlist: user.wishlist
         },
         token
       }
@@ -129,7 +142,9 @@ const login = async (req, res) => {
 // @access  Private
 const getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id).select('-password');
+    const user = await User.findById(req.user._id)
+      .select('-password')
+      .populate('wishlist');
     
     res.json({
       success: true,
@@ -150,7 +165,9 @@ const getMe = async (req, res) => {
 // @access  Private
 const verifyToken = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id).select('-password');
+    const user = await User.findById(req.user._id)
+      .select('-password')
+      .populate('wishlist');
     
     res.json({
       success: true,
