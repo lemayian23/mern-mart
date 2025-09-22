@@ -296,3 +296,48 @@
     height: 80px;
   }
 }
+.profile-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.profile-section {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+}
+
+.profile-section h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.profile-link {
+  display: block;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  color: #6e8efb;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.profile-link:hover {
+  background: #6e8efb;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.profile-section p {
+  color: #666;
+  margin: 0;
+  font-size: 0.9rem;
+}

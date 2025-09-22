@@ -13,10 +13,17 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
 import AdminDashboard from './pages/AdminDashboard';
-import PrivateRoute from './components/auth/PrivateRoute'; // Import PrivateRoute
+import PrivateRoute from './components/auth/PrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+
+// Import all the new pages we've created
+import PaymentMethodsPage from './pages/PaymentMethodsPage';
+import AddressBookPage from './pages/AddressBookPage';
+import WishlistPage from './pages/WishlistPage';
+import OrdersPage from './pages/OrdersPage';
+import OrderDetailsPage from './pages/OrderDetailsPage';
 
 function App() {
   return (
@@ -33,14 +40,46 @@ function App() {
                   <Route path="/products" element={<Products />} />
                   <Route path="/product/:id" element={<ProductDetail />} />
                   <Route path="/cart" element={<CartPage />} />
-                  <Route path="/profile" element={<Profile />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/about" element={<About />} />
+                  
+                  {/* Protected Routes */}
+                  <Route path="/profile" element={
+                    <PrivateRoute>
+                      <Profile />
+                    </PrivateRoute>
+                  } />
+                  <Route path="/payment-methods" element={
+                    <PrivateRoute>
+                      <PaymentMethodsPage />
+                    </PrivateRoute>
+                  } />
+                  <Route path="/addresses" element={
+                    <PrivateRoute>
+                      <AddressBookPage />
+                    </PrivateRoute>
+                  } />
+                  <Route path="/wishlist" element={
+                    <PrivateRoute>
+                      <WishlistPage />
+                    </PrivateRoute>
+                  } />
+                  <Route path="/orders" element={
+                    <PrivateRoute>
+                      <OrdersPage />
+                    </PrivateRoute>
+                  } />
+                  <Route path="/orders/:id" element={
+                    <PrivateRoute>
+                      <OrderDetailsPage />
+                    </PrivateRoute>
+                  } />
                   <Route path="/admin" element={
                     <PrivateRoute>
                       <AdminDashboard />
                     </PrivateRoute>
                   } />
+                  
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

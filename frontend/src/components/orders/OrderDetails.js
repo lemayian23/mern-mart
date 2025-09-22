@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { orderService } from '../../services/orderService';
 import OrderTracking from './OrderTracking';
-import './OrderDetails.css';
+import './OrderDetails.css'; // Changed from './OrderDetails.css' to './OrderDetails.css'
 
 const OrderDetails = ({ orderId }) => {
   const [order, setOrder] = useState(null);
@@ -39,7 +39,7 @@ const OrderDetails = ({ orderId }) => {
         {order.items.map(item => (
           <div key={item.id} className="order-item">
             <img src={item.product.image} alt={item.product.name} />
-            <div>
+            <div className="order-item-details">
               <h4>{item.product.name}</h4>
               <p>Quantity: {item.quantity}</p>
               <p>Price: ${item.price.toFixed(2)}</p>

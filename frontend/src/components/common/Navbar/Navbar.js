@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../hooks/useAuth';
-import { useCart } from '../../../hooks/useCart';
+import { useAuth } from '../../../context/AuthContext';
+import { useCart } from '../../../context/CartContext';
 import { toast } from 'react-toastify';
 import AuthModal from '../../auth/AuthModal';
 import './Navbar.css';
@@ -75,6 +75,22 @@ const Navbar = () => {
                     <span className="dropdown-icon">⚙️</span>
                     Profile
                   </Link>
+                  <Link to="/orders" className="dropdown-item" onClick={closeMobileMenu}>
+                    <span className="dropdown-icon">📋</span>
+                    Orders
+                  </Link>
+                  <Link to="/wishlist" className="dropdown-item" onClick={closeMobileMenu}>
+                    <span className="dropdown-icon">❤️</span>
+                    Wishlist
+                  </Link>
+                  <Link to="/addresses" className="dropdown-item" onClick={closeMobileMenu}>
+                    <span className="dropdown-icon">🏠</span>
+                    Addresses
+                  </Link>
+                  <Link to="/payment-methods" className="dropdown-item" onClick={closeMobileMenu}>
+                    <span className="dropdown-icon">💳</span>
+                    Payment Methods
+                  </Link>
                   <button onClick={handleLogout} className="dropdown-item">
                     <span className="dropdown-icon">🚪</span>
                     Logout
@@ -145,8 +161,25 @@ const Navbar = () => {
             <span className="nav-label">Contact</span>
           </Link>
 
-          {isAuthenticated ? (
+          {isAuthenticated && (
             <>
+              {/* User features in mobile menu */}
+              <Link to="/orders" className="mobile-nav-item" onClick={closeMobileMenu}>
+                <span className="nav-icon">📋</span>
+                <span className="nav-label">Orders</span>
+              </Link>
+              <Link to="/wishlist" className="mobile-nav-item" onClick={closeMobileMenu}>
+                <span className="nav-icon">❤️</span>
+                <span className="nav-label">Wishlist</span>
+              </Link>
+              <Link to="/addresses" className="mobile-nav-item" onClick={closeMobileMenu}>
+                <span className="nav-icon">🏠</span>
+                <span className="nav-label">Addresses</span>
+              </Link>
+              <Link to="/payment-methods" className="mobile-nav-item" onClick={closeMobileMenu}>
+                <span className="nav-icon">💳</span>
+                <span className="nav-label">Payment Methods</span>
+              </Link>
               <Link to="/profile" className="mobile-nav-item" onClick={closeMobileMenu}>
                 <span className="nav-icon">⚙️</span>
                 <span className="nav-label">Profile</span>
@@ -156,7 +189,9 @@ const Navbar = () => {
                 <span className="nav-label">Logout</span>
               </button>
             </>
-          ) : (
+          )}
+
+          {!isAuthenticated && (
             <button onClick={openAuthModal} className="mobile-nav-item login-btn">
               <span className="nav-icon">🔐</span>
               <span className="nav-label">Login / Register</span>

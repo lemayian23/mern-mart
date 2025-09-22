@@ -22,6 +22,7 @@ app.use('/api/user', require('./routes/user'));
 app.use('/api/orders', require('./routes/orders'));
 app.use('/api/addresses', require('./routes/addresses'));
 app.use('/api/wishlist', require('./routes/wishlist'));
+app.use('/api/payments', require('./routes/paymentRoutes'));
 
 // Basic test route
 app.get('/api/test', (req, res) => {

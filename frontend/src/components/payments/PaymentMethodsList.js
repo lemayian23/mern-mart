@@ -52,6 +52,7 @@ const PaymentMethodsList = () => {
   };
 
   if (loading) return <div className="loading">Loading payment methods...</div>;
+  if (error) return <div className="error-message">{error}</div>;
 
   return (
     <div className="payment-methods">
@@ -67,8 +68,6 @@ const PaymentMethodsList = () => {
           Add Payment Method
         </button>
       </div>
-
-      {error && <div className="error-message">{error}</div>}
 
       {showForm && (
         <PaymentMethodForm

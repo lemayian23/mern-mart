@@ -43,11 +43,31 @@ const orderSchema = new mongoose.Schema({
     zipCode: String
   },
   paymentMethod: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'PaymentMethod'
+  },
+  paymentStatus: {
     type: String,
-    required: true
+    enum: ['pending', 'paid', 'failed', 'refunded'],
+    default: 'pending'
+  },
+  transactionId: String,
+  paidAt: Date,
+  orderNumber: {
+    type: String,
+    unique: true
   }
 }, {
   timestamps: true
+});
+
+// Generate order number before saving
+orderSchema.pre('save', async function(next) {
+  if (this.isNew && !this.orderNumber) {
+    const count = await mongoose.model('Order').countDocuments();
+    this.orderNumber = `ORD${Date.now()}${count + 1}`;
+  }
+  next();
 });
 
 module.exports = mongoose.model('Order', orderSchema);

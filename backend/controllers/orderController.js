@@ -34,17 +34,17 @@ exports.getOrderById = async (req, res) => {
   }
 };
 
-// Create new order
 exports.createOrder = async (req, res) => {
   try {
-    const { items, total, shippingAddress, paymentMethod } = req.body;
+    const { items, total, shippingAddress, paymentMethodId } = req.body;
     
     const order = new Order({
       user: req.user.id,
       items,
       total,
       shippingAddress,
-      paymentMethod
+      paymentMethod: paymentMethodId,
+      paymentStatus: 'pending' // Default to pending payment
     });
 
     const savedOrder = await order.save();
