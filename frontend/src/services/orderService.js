@@ -19,5 +19,11 @@ export const orderService = {
   updateOrderStatus: async (id, status) => {
     const response = await api.patch(`/orders/${id}/status`, { status });
     return response.data;
+  },
+
+  // New method for real-time status updates
+  subscribeToOrderUpdates: (orderId, callback) => {
+    // This will be handled by the socket service directly
+    console.log(`Subscribing to order updates for: ${orderId}`);
   }
 };

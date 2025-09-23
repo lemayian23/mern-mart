@@ -1,5 +1,5 @@
 import React from 'react';
-import './Order.css';
+import './OrderTracking.css';
 
 const OrderTracking = ({ status }) => {
   const statusSteps = [
@@ -12,13 +12,14 @@ const OrderTracking = ({ status }) => {
   const currentStatusIndex = statusSteps.findIndex(step => step.key === status);
 
   return (
-    <div className="order-tracking">
-      <h3>Order Status</h3>
-      <div className="tracking-progress">
+    <div className="order-tracking-static">
+      <h3>Order Progress</h3>
+      <div className="tracking-progress-static">
         {statusSteps.map((step, index) => (
-          <div key={step.key} className={`tracking-step ${index <= currentStatusIndex ? 'completed' : ''} ${index === currentStatusIndex ? 'current' : ''}`}>
-            <div className="step-dot"></div>
-            <div className="step-label">{step.label}</div>
+          <div key={step.key} className={`tracking-step-static ${index <= currentStatusIndex ? 'completed' : ''}`}>
+            <div className="step-dot-static"></div>
+            <div className="step-label-static">{step.label}</div>
+            {index < statusSteps.length - 1 && <div className="step-connector-static"></div>}
           </div>
         ))}
       </div>

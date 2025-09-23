@@ -1,4 +1,5 @@
 const Order = require('../models/Order');
+const OrderNotifications = require('../utils/orderNotifications');
 
 // Get all orders for a user
 exports.getUserOrders = async (req, res) => {
@@ -57,19 +58,29 @@ exports.createOrder = async (req, res) => {
 };
 
 // Update order status
-exports.updateOrderStatus = async (req, res) => {
+exports.createOrder = async (req, res) => {
   try {
-    const { status } = req.body;
-    const order = await Order.findById(req.params.id);
+    const { items, total, shippingAddress, paymentMethodId } = req.body;
     
-    if (!order) {
-      return res.status(404).json({ message: 'Order not found' });
+    const order = new Order({
+      user: req.user.id,
+      items,
+      total,
+      shippingAddress,
+      paymentMethod: paymentMethodId,
+      paymentStatus: 'pending'
+    });
+
+    const savedOrder = await order.save();
+    await savedOrder.populate('user', 'name email');
+    await savedOrder.populate('items.product', 'name image');
+
+    // Send real-time notification for new order (admin only)
+    if (req.user.role === 'admin') {
+      await OrderNotifications.notifyNewOrder(savedOrder);
     }
 
-    order.status = status;
-    const updatedOrder = await order.save();
-    
-    res.json(updatedOrder);
+    res.status(201).json(savedOrder);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }

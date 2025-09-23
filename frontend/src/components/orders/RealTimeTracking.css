@@ -1,0 +1,166 @@
+.real-time-tracking {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px 0;
+}
+
+.tracking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.tracking-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.connected {
+  background: #28a745;
+  animation: pulse 2s infinite;
+}
+
+.status-dot.disconnected {
+  background: #dc3545;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.tracking-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tracking-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.step-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ddd;
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px #ddd;
+  transition: all 0.3s ease;
+}
+
+.tracking-step.completed .step-dot {
+  background: #28a745;
+  box-shadow: 0 0 0 2px #28a745;
+}
+
+.tracking-step.current .step-dot {
+  background: #6e8efb;
+  box-shadow: 0 0 0 2px #6e8efb;
+  animation: pulse 2s infinite;
+}
+
+.step-connector {
+  width: 2px;
+  height: 40px;
+  background: #ddd;
+  margin: 4px 0;
+}
+
+.tracking-step.completed .step-connector {
+  background: #28a745;
+}
+
+.step-info {
+  flex: 1;
+  padding-bottom: 20px;
+}
+
+.step-label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.tracking-step.completed .step-label,
+.tracking-step.current .step-label {
+  color: #28a745;
+}
+
+.tracking-step.current .step-label {
+  color: #6e8efb;
+}
+
+.step-description {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.tracking-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-processing { background: #fff3cd; color: #856404; }
+.status-shipped { background: #cce5ff; color: #004085; }
+.status-out-for-delivery { background: #d1ecf1; color: #0c5460; }
+.status-delivered { background: #d4edda; color: #155724; }
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .real-time-tracking {
+    padding: 16px;
+  }
+  
+  .tracking-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .tracking-footer {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+}

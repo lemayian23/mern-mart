@@ -1,0 +1,65 @@
+.order-tracking-static {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  border-left: 4px solid #6e8efb;
+}
+
+.order-tracking-static h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.tracking-progress-static {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.tracking-progress-static::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ddd;
+  z-index: 1;
+}
+
+.tracking-step-static {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.step-dot-static {
+  width: 30px;
+  height: 30px;
+  background: #ddd;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.tracking-step-static.completed .step-dot-static {
+  background: #28a745;
+}
+
+.step-label-static {
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+}
+
+.tracking-step-static.completed .step-label-static {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.step-connector-static {
+  display: none; /* Not needed for static version */
+}
